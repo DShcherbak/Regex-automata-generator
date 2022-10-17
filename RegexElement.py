@@ -60,7 +60,6 @@ def inverse_polish(text):
             result.append(RegexElement('@'))
     while(len(stack) > 0):
         result.append(RegexElement(stack.pop()))
-    print(result)
     return result
                 
 
@@ -84,6 +83,8 @@ def apply(polish):
 def create_from_text(text):
     text = preprocess(text)
     polish = inverse_polish(text)
-    print(polish)
+    for elem in polish:
+        print(elem.value, end='')
+    print()
     # regexElem, _ = apply(polish)
     return polish
