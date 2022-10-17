@@ -9,7 +9,8 @@ def main():
    
     regex = [RegexElement(RegexElemType.Letter, "a"), 
             RegexElement(RegexElemType.Letter, "b"), 
-            RegexElement(RegexElemType.Conjunction)]
+            RegexElement(RegexElemType.Disjunction),
+            RegexElement(RegexElemType.Star)]
 
     # build automata
 
