@@ -32,7 +32,7 @@ def compileNFA(regex: List[RegexElement]) -> NFA:
     nfaStack: List[State] = []
 
     for elem in regex: 
-        if elem.type == RegexElemType.Star:
+        if elem.type == RegexElemType.Iteration:
             nfa1 = nfaStack.pop() 
 
             initial = State()

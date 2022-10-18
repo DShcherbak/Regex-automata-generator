@@ -1,16 +1,16 @@
-from RegexElement import RegexElement, RegexElemType
+from RegexElement import RegexElement, RegexElemType, create_from_text
 import NFA
 from transition_table import build_transition_table, print_transition_table
 
 def main():
     # get regex
-
+    regexString = "abVba{a}"
+    print(regexString)
+    regex = create_from_text(regexString)
     # regex to enum list
    
-    regex = [RegexElement(RegexElemType.Letter, "a"), 
-            RegexElement(RegexElemType.Letter, "b"), 
-            RegexElement(RegexElemType.Disjunction),
-            RegexElement(RegexElemType.Star)]
+
+    # regex = [RegexElement("a"), RegexElement("b"), RegexElement('V')]
 
     # build automata
 
