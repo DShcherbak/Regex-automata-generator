@@ -9,6 +9,7 @@ def main():
     regex = create_from_text(regexString)
     # regex to enum list
    
+
     # regex = [RegexElement("a"), RegexElement("b"), RegexElement('V')]
 
     # build automata

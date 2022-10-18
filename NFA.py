@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Any, Dict, Set
+from typing import List, Any, Dict, Set, ClassVar
 from RegexElement import RegexElement, RegexElemType
 
 @dataclass
@@ -10,12 +10,16 @@ class Transition:
 @dataclass
 class State: 
     transitions: Set[Transition]
+    object_id: int
+    object_id_counter: ClassVar[int] = 0
 
     def __init__(self) -> None:
         self.transitions = ()
+        self.object_id = State.object_id_counter
+        State.object_id_counter += 1
 
     def __hash__(self):
-        return hash(id(self))
+        return hash(self.object_id)
 
 @dataclass
 class NFA:
