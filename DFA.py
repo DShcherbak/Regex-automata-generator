@@ -31,7 +31,7 @@ _alfabet = []
 
 def determinize(nfa_tuple):
     global array_to_number, dfa, _alfabet
-    (nfa, final_states, alfabet) = nfa_tuple
+    (nfa, nfa_final_states, alfabet) = nfa_tuple
     _alfabet = alfabet
 
     array_to_number = {}
@@ -45,7 +45,15 @@ def determinize(nfa_tuple):
 
     determinize_dfs(current_vertice, nfa)
 
-    print(dfa)
+    final_states = []
+    for mega_vertex in array_to_number:
+        for elem in mega_vertex:
+            if elem in nfa_final_states:
+                final_states.append(array_to_number[mega_vertex])
+                break
+
+    print(dfa, final_states)
+    return (dfa, final_states)
 
 def determinize_dfs(current_vertice, nfa):
     cur_vert_num = array_to_number[current_vertice.to_tuple()]
