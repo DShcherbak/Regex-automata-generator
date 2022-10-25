@@ -6,7 +6,6 @@ def build_NFA(regexTree):
     countFirst(regexTree)
     result = countFollow(regexTree)
     result.append((0, '0', regexTree.First))
-    print(result)
     dict = pretty_result(result)
     return dict
 
@@ -23,7 +22,7 @@ def pretty_result(result):
             for edge in next_edges:
                 if(edge == number):
                     dict[next_num].append((letter, number))
-    print(dict)
+                    
     return (dict, final_states, alfabet)
 
 

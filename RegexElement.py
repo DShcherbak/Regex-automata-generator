@@ -86,10 +86,6 @@ def apply(polish):
 def create_from_text(text):
     text = preprocess(text)
     polish = inverse_polish(text)
-    for elem in polish:
-        print(elem.value, end='')
-    print()
     polish.reverse()
     regexElem, _ = apply(polish)
-    print(regexElem.value)
     return regexElem

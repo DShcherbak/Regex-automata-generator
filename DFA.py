@@ -45,7 +45,6 @@ def determinize(nfa_tuple):
 
     determinize_dfs(current_vertice, nfa)
 
-    print("RESULT::::::::")
     print(dfa)
 
 def determinize_dfs(current_vertice, nfa):
@@ -58,7 +57,7 @@ def determinize_dfs(current_vertice, nfa):
                     if letter == next_letter:
                         next_vertice.append(next_vert)
         next_vertice_tuple = next_vertice.to_tuple()
-        print(current_vertice.to_tuple(), "---", letter, "--->", next_vertice_tuple)
+        # print(current_vertice.to_tuple(), "---", letter, "--->", next_vertice_tuple)
         if not next_vertice_tuple in array_to_number:
             array_to_number[next_vertice_tuple] = len(array_to_number)
             dfa[len(array_to_number)-1] = {}

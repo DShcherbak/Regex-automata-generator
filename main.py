@@ -7,7 +7,6 @@ from transition_table import build_transition_table, print_transition_table
 def main():
     # get regex
     regexString = "({xVy}x)V{x}{y}"
-    print(regexString)
     regex = create_from_text(regexString)
     
 
