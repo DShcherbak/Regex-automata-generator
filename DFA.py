@@ -52,7 +52,6 @@ def determinize(nfa_tuple):
                 final_states.append(array_to_number[mega_vertex])
                 break
 
-    print(dfa, final_states)
     return (dfa, final_states)
 
 def determinize_dfs(current_vertice, nfa):
