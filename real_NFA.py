@@ -3,6 +3,7 @@ from RegexElement import RegexElement, RegexElemType
 def build_NFA(regexTree):
     general_tree = RegexElement(RegexElemType.Letter, '#')
     regexTree = RegexElement(RegexElemType.Conjunction, regexTree, general_tree)
+
     countFirst(regexTree)
     result = countFollow(regexTree)
     result.append((0, '0', regexTree.First))
@@ -71,7 +72,7 @@ def countFollow(regexTree):
         regexTree.value.Follow = regexTree.second_value.First
         if 0 in regexTree.value.Follow:
             regexTree.value.Follow = [i for i in regexTree.value.Follow if i != 0]
-            regexTree.value.First += regexTree.Follow
+            regexTree.value.Follow += regexTree.Follow
         regexTree.second_value.Follow = regexTree.Follow
         result = countFollow(regexTree.value)
         result += countFollow(regexTree.second_value)

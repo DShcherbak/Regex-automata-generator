@@ -6,10 +6,11 @@ from transition_table import build_transition_table, print_transition_table
 
 def main():
     # get regex
-    regexString = "(abcVcba)"
+    regexString = "abba{aVb}"
     regex = create_from_text(regexString)
     
     nfa = build_NFA(regex) 
+    print(nfa)
     dfa, final_states = determinize(nfa)
 
     table = build_transition_table(dfa, final_states)
