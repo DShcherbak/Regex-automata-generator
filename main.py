@@ -9,14 +9,10 @@ def main():
     regexString = "(abcVcba)"
     regex = create_from_text(regexString)
     
-
     nfa = build_NFA(regex) 
-    dfa = determinize(nfa)
+    dfa, final_states = determinize(nfa)
 
-
- #   nfa = NFA.compileNFA(regex)
-    # output automata table
- #   table = build_transition_table(nfa)
- #   print_transition_table(table)
+    table = build_transition_table(dfa, final_states)
+    print_transition_table(table)
 
 main()
