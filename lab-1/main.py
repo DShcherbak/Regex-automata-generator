@@ -1,22 +1,20 @@
+from DFA import determinize
 from RegexElement import RegexElement, RegexElemType, create_from_text
 import NFA
+from real_NFA import build_NFA
 from transition_table import build_transition_table, print_transition_table
 
 def main():
     # get regex
-    regexString = "a({a}V{b})"
+    regexString = "abVba{a}"
     print(regexString)
     regex = create_from_text(regexString)
-    # regex to enum list
-   
+    
+    nfa = build_NFA(regex) 
+    print(nfa)
+    dfa, final_states = determinize(nfa)
 
-    # regex = [RegexElement("a"), RegexElement("b"), RegexElement('V')]
-
-    # build automata
-
-    nfa = NFA.compileNFA(regex)
-    # output automata table
-    table = build_transition_table(nfa)
+    table = build_transition_table(dfa, final_states)
     print_transition_table(table)
 
 main()
