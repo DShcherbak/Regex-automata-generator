@@ -4,7 +4,7 @@ from transition_table import build_transition_table, print_transition_table
 
 def main():
     # get regex
-    regexString = "abVba{a}"
+    regexString = "a({a}V{b})"
     print(regexString)
     regex = create_from_text(regexString)
     # regex to enum list
