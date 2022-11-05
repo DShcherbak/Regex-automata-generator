@@ -22,7 +22,16 @@ class Set:
     def is_empty(self):
         return self._value == []
     
-
+def collapse_final_states(states):
+    result = {}
+    for (vertex, letter) in states:
+        if vertex not in result:
+            result[vertex] = letter 
+        elif len(result[vertex]) == 1:
+            result[vertex] = '{' + result[vertex] + letter + '}'
+        else:
+            result[vertex] = result[vertex][:-1] + letter + '}'
+    return result
 
 array_to_number = {}
 dfa = {}
@@ -52,7 +61,7 @@ def determinize(nfa_tuple):
         for elem in mega_vertex:
             if elem in nfa_final_states:
                 final_states.append((array_to_number[mega_vertex], nfa_final_states[elem]))
-
+    final_states = collapse_final_states(final_states)
     return (dfa, final_states)
 
 def determinize_dfs(current_vertice, nfa):
