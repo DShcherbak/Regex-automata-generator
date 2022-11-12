@@ -3,6 +3,7 @@ from RegexElement import RegexElement, RegexElemType, create_from_text
 from real_NFA import build_NFA
 from DFA import *
 from transition_table import build_transition_table, print_transition_table
+from print_output_function import print_output_function
 
 def main():
     # get regex
@@ -25,13 +26,14 @@ def main():
         alphabet.update(nfa_alphabet)
         
     dfa, final_states = determinize((nfa, final_states, list(alphabet)))
-    
+
     # output automata table
     table = build_transition_table(dfa, final_states)
+    print("Mur's table:")
     print_transition_table(table)
 
-
     output_function = Mili_from_Mur(dfa, final_states)
-    print(output_function)
+    print("Output function (Mili): ")
+    print_output_function(output_function)
 
 main()
