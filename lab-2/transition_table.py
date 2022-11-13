@@ -5,15 +5,18 @@ from NFA import NFA, State
 
 TransitionTable = Dict[str, Dict[str, str]]
 
-def build_transition_table(dfa, final_states: List[int]) -> TransitionTable:
-    return {f"[{state}] {final_states[state]}" if state in final_states else state: transitions for state, transitions in dfa.items()}
+FinalStateForText = "State is final for"
+
+def build_transition_table(dfa, final_states) -> TransitionTable:
+    return {state: {**transitions, FinalStateForText : final_states.get(state, "")} for state, transitions in dfa.items()}
 
 def print_transition_table(table: TransitionTable):
     letters = []
     for values in table.values():
         for key in sorted(values.keys()):
-            if key not in letters:
+            if key not in letters and key is not FinalStateForText:
                 letters.append(key)
+    letters.append(FinalStateForText)
 
     rows = []
     for qN, dic in table.items():
