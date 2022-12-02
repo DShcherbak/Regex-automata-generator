@@ -19,13 +19,10 @@ class Auto:
             isNewElementFound = False 
             Marked2 = Marked.copy()
             for i in range(len(self.L)):
-                print(i)
                 funcs = self.L[i]
                 for func_name in [f for (f,arity) in self.X if arity == i]:
-                    print("    ",func_name)
                     f = funcs[func_name]
                     for arguments in allCombinations(Marked, i):
-                        print("        ", arguments)
                         if arguments in f:
                             res = f[arguments]
                             Marked2.add(res)
